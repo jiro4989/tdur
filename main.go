@@ -23,22 +23,17 @@ type options struct {
 }
 
 func main() {
-	// エラーが発生したときはpanicする
-	checkError := func(err error) {
-		if err != nil {
-			panic(err)
-		}
-	}
-
 	// オプション引数解析
 	var opts options
 	args, err := flags.Parse(&opts)
-	checkError(err)
+	if err != nil {
+		return
+	}
 
 	// durationを計算するために最低２つは引数が必要
 	// 無ければ終了
 	if len(args) < 2 {
-		fmt.Fprintf(os.Stderr, "Need 2 arguments. args=%v\n", args)
+		fmt.Fprintf(os.Stderr, "Need 2 arguments. See -h. args=%v\n", args)
 		os.Exit(1)
 	}
 
