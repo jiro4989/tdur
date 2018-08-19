@@ -37,3 +37,10 @@ tdur -s 10:00 19:00
     Help Options:
       -h, --help    Show this help message
 
+
+## 開発方法
+
+```
+make deps
+make
+```
