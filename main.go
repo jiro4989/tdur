@@ -9,6 +9,10 @@ import (
 	flags "github.com/jessevdk/go-flags"
 )
 
+// アプリのバージョン情報
+// ビルド時に値をセットする
+var Version string
+
 const (
 	Second = 1
 	Minute = 60
@@ -17,14 +21,20 @@ const (
 
 // options はコマンドラインオプションを保持する。
 type options struct {
-	HourFlag   bool `long:"hour" description:"hour flag"`
-	MinuteFlag bool `short:"m" long:"minute" description:"minute flag"`
-	SecondFlag bool `short:"s" long:"second" description:"second flag"`
+	Version    func() `short:"v" long:"version" description:"version"`
+	HourFlag   bool   `long:"hour" description:"hour flag"`
+	MinuteFlag bool   `short:"m" long:"minute" description:"minute flag"`
+	SecondFlag bool   `short:"s" long:"second" description:"second flag"`
 }
 
 func main() {
 	// オプション引数解析
 	var opts options
+	opts.Version = func() {
+		fmt.Println(Version)
+		os.Exit(0)
+	}
+
 	args, err := flags.Parse(&opts)
 	if err != nil {
 		return
