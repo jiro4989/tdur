@@ -9,10 +9,6 @@ import (
 	flags "github.com/jessevdk/go-flags"
 )
 
-// アプリのバージョン情報
-// ビルド時に値をセットする
-var Version string
-
 const (
 	Second = 1
 	Minute = 60
