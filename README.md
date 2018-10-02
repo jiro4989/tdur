@@ -1,5 +1,7 @@
 # tdur (Time Duration)
 
+[![Build Status](https://travis-ci.org/jiro4989/tdur.svg?branch=master)](https://travis-ci.org/jiro4989/tdur)
+
 時刻と時刻の差を計算するコマンド。
 
 ## 使い方
